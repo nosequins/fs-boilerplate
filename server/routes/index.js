@@ -1,6 +1,25 @@
 const router = require("express").Router()
-//import models from /db
 
-//routes go here
+const {Student, Campus, syncAndSeed}= require('../db');
 
-module.exports = router
+router.get('/api/campuses', async(req, res, next)=>{
+    try{
+        const data= await Campus.findAll()
+        res.send(data)
+
+    }catch(err){
+        next(err)
+    } 
+})
+router.get('/api/students', async(req, res, next)=>{
+    try{
+        const data= await Student.findAll()
+        res.send(data);
+
+    }catch(err){
+        next(err)
+    } 
+})
+
+module.exports= router
+

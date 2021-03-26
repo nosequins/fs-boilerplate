@@ -1,6 +1,13 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import App from "./components/App"
+import {combineReducers, createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
+import {campusReducer} from './components/Campus/campusReducer'
+import {studentReducer} from './components/Students/studentReducer'
+const rootReducer= combineReducers({
+    stud:studentReducer,
+    camp:campusReducer
+    
+})
+export const store= createStore(rootReducer, applyMiddleware(thunk))
 
-ReactDOM.render(<App />, document.getElementById("root"))
+
 //make sure "root" is right or change it
