@@ -5,7 +5,7 @@ const {Student, Campus}= require('../db');
 router.get('/campuses', async(req, res, next)=>{
     try{
         const data= await Campus.findAll()
-        res.send(data)
+        res.status(200).send(data)
 
     }catch(err){
         next(err)
@@ -14,7 +14,7 @@ router.get('/campuses', async(req, res, next)=>{
 router.get('/students', async(req, res, next)=>{
     try{
         const data= await Student.findAll();
-        res.send(data);
+        res.status(200).send(data);
 
     }catch(err){
         next(err)
@@ -24,7 +24,7 @@ router.get('/students', async(req, res, next)=>{
 router.post('/students', async(req, res, next)=>{
     try{
         
-        res.send(await Student.create(req.body));
+        res.status(200).send(await Student.create(req.body));
         
         
     }catch(er){
@@ -35,7 +35,7 @@ router.post('/students', async(req, res, next)=>{
 router.post('/campuses', async(req, res, next)=>{
     try{
         const newCamp= await Campus.create(req.body);
-        res.send(newCamp);
+        res.status(200).send(newCamp);
     }catch(er){
         next(er)
     }
@@ -44,7 +44,7 @@ router.post('/campuses', async(req, res, next)=>{
 router.put('/students/:id', async(req, res, next)=>{
     try{
         const data= await Student.findByPk(req.params.id);
-        res.send(await data.update(req.body));
+        res.status(200).send(await data.update(req.body));
 
     }catch(err){
         next(err)
@@ -53,7 +53,7 @@ router.put('/students/:id', async(req, res, next)=>{
 router.put('/campuses/:id', async(req, res, next)=>{
     try{
         const data= await Campus.findByPk(req.params.id)
-        res.send(await data.update(req.body));
+        res.status(200).send(await data.update(req.body));
 
     }catch(err){
         next(err)
