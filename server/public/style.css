@@ -1,2 +1,89 @@
 *{font-family: Arial;}
-*{background-color: lightblue;}
+#nav{
+    display: flex;
+    justify-content: space-between;
+}
+#other{
+    display: flex;
+    justify-content: space-between;
+}
+h1{
+    margin-top:5rem;
+}
+.student{
+    background-color: lightgray;
+    width: 150px;
+    height: 150px;
+    border: solid 1px black ;
+    margin: 5px 5px 5px 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+}
+#studentsTitle #campusesTitle{
+    margin:10px
+}
+.allStudents, .allCampuses{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+#createStudent, #createCampus{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+.campus{
+    display:flex;
+    flex-direction:row;
+    width: 200px;
+    height: 100px;
+    margin: 5px 5px 5px 5px;
+    background-color: lightgray;
+    border: solid 1px black ;
+}
+#singleCampus{
+    display:flex;
+    flex-direction:row;
+
+}
+#home{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#campusDirection{
+    margin-right: 8px;
+}
+#campusInfo{
+    display:flex;
+    flex-direction: column;
+}
+#tools{
+    display:flex;
+    justify-content:flex-end;
+}
+#edit{
+    margin-right:5px;
+}
+#contents{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#change{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+input{
+    width:300px;
+}
+#editStudent, #editCampus{
+    display:flex;
+    flex-direction: column;
+}
+
+
+body{background-color: lightblue;}

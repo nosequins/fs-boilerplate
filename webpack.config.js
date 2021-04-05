@@ -7,10 +7,11 @@ module.exports = {
 	resolve: {
 		extensions: [".js", ".jsx"],
 	},
-	devtool: "source-map",
+	devtool: "inline-source-map",
 	watchOptions: {
 		ignored: /node_modules/,
 	},
+	target:'node',
 	module: {
 		rules: [
 			{
@@ -24,5 +25,3 @@ module.exports = {
 		],
 	},
 }
-// entry: ["./client/index.js"]
-// entry: ["./client/components/App.js"]

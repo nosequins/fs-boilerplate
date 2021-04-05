@@ -1,10 +1,8 @@
 const db= require('./db');
 const { Campus, Student } = require('./models/Example');
-const syncAndSeed = require('./seed')
-Student.belongsTo(Campus);
-Campus.hasMany(Student);
 
-module.exports = {db, Student, Campus, syncAndSeed}
+
+module.exports = {db, Student, Campus}
 //import your db
 //import your models
 
