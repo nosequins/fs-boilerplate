@@ -5,7 +5,7 @@ export const fetchStudentData =()=>{
     return async(dispatch)=>{
         try{
             const data= (await axios.get('http://localhost:3000/api/students')).data
-            
+
             dispatch(fetchStudent(data))
         }
         catch(err){
@@ -16,10 +16,11 @@ export const fetchStudentData =()=>{
 
 export const createStudentData=(student)=>{
     return async(dispatch)=>{
-        try{
+        try {
+            /*aim to be consistent in whether you're destructuring and renaming data or using (axios call).data */
             const {data: created}= await axios.post('/api/students', student)
             dispatch(createStudent(created))
-            
+
         }catch(er){
             console.log(er)
         }
@@ -29,7 +30,7 @@ export const createStudentData=(student)=>{
 export const updateStudentData=(student)=>{
     return async (dispatch)=>{
         try{
-            
+
             const data= (await axios.put(`http://localhost:3000/api/students/${student.id}`, student)).data
             dispatch(updateStudent(data))
         }catch(er){

@@ -22,16 +22,19 @@ class EditCampus extends Component{
     async componentDidMount(){
         await Promise.all([this.props.fetchCampus(),this.props.fetchStudents()])
         const {name, imageUrl, address, description, campus, students}= this.state
-        this.setState({name: this.props.campus.name, imageUrl:this.props.campus.imageUrl, address: this.props.campus.address, description: this.props.campus.description, campus:this.props.campus, students: this.props.students})
+        this.setState({ name: this.props.campus.name, imageUrl: this.props.campus.imageUrl, address: this.props.campus.address, description: this.props.campus.description, campus: this.props.campus, students: this.props.students })
+        //i don't think you need to add the campus and students to state here?
     }
     handleChange(e){
         this.setState({[e.target.name]:e.target.value})
     }
+    //this naming is really confusing
     async handleSubmitC(e){
         e.preventDefault();
         this.props.updateCampus({name:this.state.name, imageUrl:this.state.imageUrl, address: this.state.address, description:this.state.description})
 
     }
+    //as is this one
     async handleSubmitS(e){
         console.log(e)
         e.preventDefault();
@@ -49,6 +52,8 @@ class EditCampus extends Component{
                 <div>
                     <form id='editCampus' onSubmit={handleSubmitC}>
                         <label>Campus Name</label>
+                        {/*the values here should be the strings from state
+                        instead of from the campus object on state. when you change this, it doesnt change the string in the input. */}
                         <input name='name' onChange={handleChange} value={campus.name}/>
                         <label>Campus Location</label>
                         <input name='address' onChange={handleChange} value={campus.address}/>
@@ -72,7 +77,7 @@ class EditCampus extends Component{
                     {!students.length?
                     <div>
                         <p>There are no students currently registered to this campus.</p>
-                    
+
                     </div>:
                         <div id='listOfStudents'>
                             {studentsOnCampus.map(student=>{
@@ -108,7 +113,9 @@ const mapStateToProps=(state, OwnProps)=>{
 const mapDispatchToProps=(dispatch)=>{
     return{
         fetchCampus: ()=>dispatch(fetchCampusData()),
-        fetchStudents:()=>dispatch(fetchStudentData()),
+        fetchStudents: () => dispatch(fetchStudentData()),
+        /* you haven't declared any parameters for the updateCampus and updateStudent functions, so even when you pass in arguments in the component above,
+        it doesnt do anything with them */
         updateCampus: ()=>dispatch(updateCampusData()),
         updateStudent:()=>dispatch(updateStudentData())
     }

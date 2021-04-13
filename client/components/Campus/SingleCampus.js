@@ -10,7 +10,7 @@ class SingleCampus extends Component{
         super()
         this.state={loading:true,
         newStudent:{},
-        
+
     }
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
@@ -22,7 +22,7 @@ class SingleCampus extends Component{
         this.setState({loading:false})
     }
     handleChange(e){
-        
+
         const thisStudent=this.props.students.find(student=>student.id ==e.target.value)
         this.setState({newStudent:thisStudent})
     }
@@ -35,7 +35,8 @@ class SingleCampus extends Component{
     }
     render(){
         const {handleChange, handleSubmit}=this
-        const {students, campus, deleteCampus}= this.props;
+        const { students, campus, deleteCampus } = this.props;
+        //again really unclear naming
         let someStudents= students.filter(student=> student.campusId== campus.id)
         let notStudents= students.filter(student=> student.campusId !== campus.id)
         return(
@@ -51,9 +52,9 @@ class SingleCampus extends Component{
                         </div>
                     </div>
                     <div id='campusInfo'>
-                        
-                        <h1>{campus.name}</h1>   
-                        
+
+                        <h1>{campus.name}</h1>
+
                         <div>
                             {campus.description}
                         </div>
@@ -66,7 +67,7 @@ class SingleCampus extends Component{
                 <div>
                     <h1>Students on campus</h1>
                 </div>
-                
+
                     {!someStudents.length? <div><div>There are no students currently registered to this campus.</div>
                     <div>
                         <form onSubmit={handleSubmit}>
@@ -89,7 +90,7 @@ class SingleCampus extends Component{
                                 <button>Add Students</button>
                             </form>
                         </div>
-                        <div className='allStudents'> 
+                        <div className='allStudents'>
                             {someStudents.map(student=>{
                                 return (
                                     <div key={student.id}  className='student'>
@@ -107,7 +108,7 @@ class SingleCampus extends Component{
                         </div>
                     </div>
                     }
-                
+
             </div>
 
         )

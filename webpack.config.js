@@ -2,12 +2,12 @@ module.exports = {
 	entry: ["./client/components/App.js"],
 	output: {
 		path: __dirname,
-		filename: "./server/public/bundle.js",
+		filename: "server/public/bundle.js",
 	},
 	resolve: {
 		extensions: [".js", ".jsx"],
 	},
-	devtool: "inline-source-map",
+	devtool: "source-map",
 	watchOptions: {
 		ignored: /node_modules/,
 	},

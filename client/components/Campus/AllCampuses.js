@@ -15,32 +15,35 @@ class AllCampuses extends Component{
             isAddCampusVisible:false
         }
     }
-    
+
     async componentDidMount(){
         const {fetchCampusData, fetchStudents}=this.props
         await Promise.all([fetchCampusData(), fetchStudents()])
         this.setState({students: this.props.students})
-          
+          /*if you're getting students from props, it isnt necessary
+          to then update the state with the students */
     }
     render(){
         const {campuses, deleteCampus}=this.props
         const {students, isAddCampusVisible}= this.state
-       
+
         return (
-            
+
             <div>
                 <div>
-                <h1 id='campusesTitle'>All Campuses</h1>
+                    <h1 id='campusesTitle'>All Campuses</h1>
+                    {/*i like how you've handled showing the addCampus form.
+                    very cool! */}
                 <button onClick={()=>{this.setState({isAddCampusVisible: !isAddCampusVisible})}}>Add Campus</button>
                 </div>
                 <div>
                     {isAddCampusVisible? <AddCampus/>:null }
                 </div>
-    
+
                 <div className='allCampuses'>
                     {campuses.map(campus=>(
                         <div>
-                            <div key={campus.id} className='campus'> 
+                            <div key={campus.id} className='campus'>
                                 <div>
                                     <img src={campus.imageUrl} width="50" height="50"/>
                                 </div>
@@ -51,22 +54,22 @@ class AllCampuses extends Component{
                                     </div>
                                     <div id='change'>
                                         <Link to={`campus/${campus.id}/edit`}>edit</Link>
-                                        <div onClick={()=>deleteCampus(campus.id)}>delete</div> 
+                                        <div onClick={()=>deleteCampus(campus.id)}>delete</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     ))}
                 </div>
             </div>
         )
     }
-    
+
 }
 
 const mapStateToProps=(state)=>{
-    
+
     return {
         campuses: state.camp.campuses,
         students: state.stud.students

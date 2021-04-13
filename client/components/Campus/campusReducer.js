@@ -5,7 +5,13 @@ const inititalState ={
     campuses:[]
 }
 
+/* initial state could just be an array
+part of the point of using combine reducers
+is to eliminate the need for nested objects
+unless they are absolutely necessary.
 
+otherwise, beautiful and simple reducer!!
+*/
 export const campusReducer=(state= inititalState, action)=>{
 
     switch(action.type){

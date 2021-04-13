@@ -5,8 +5,11 @@ const inititalState={
     students:[]
 }
 
+/*instead of making the state an object that only has an array inside
+it's easier if the initial state is just an empty array
+*/
 export const studentReducer=(state= inititalState, action)=>{
-   
+
     switch(action.type){
         case FETCH_STUDENTS:
             return {
@@ -14,7 +17,7 @@ export const studentReducer=(state= inititalState, action)=>{
                 students: action.payload
             }
         case CREATE_STUDENT:
-            
+
             return{
                 students: state.students.concat(action.payload)
             }

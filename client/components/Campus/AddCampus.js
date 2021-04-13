@@ -15,7 +15,10 @@ class AddCampus extends Component{
         this.handleChange= this.handleChange.bind(this);
         this.handleSubmit= this.handleSubmit.bind(this);
     }
-    componentDidMount(){
+    componentDidMount() {
+        /*why have address and description in the state but not
+        as inputs that can be edited?
+        i'm not sure i understand the logic here...  */
         const {address, description}= this.state
         this.setState({address: faker.address.streetAddress(true), description: faker.lorem.paragraph(3)})
     }
@@ -41,7 +44,7 @@ class AddCampus extends Component{
                     <input type="submit" value="Submit"/>
                 </form>
             </div>
-            
+
 
 
         )

@@ -6,7 +6,9 @@ const path= require('path')
 const { urlencoded } = require('express');
 const router = require('./routes')
 
-
+/*you dont need to use method-override since you're using axios
+on the front end to make your calls to the server
+*/
 app.use(require('method-override')('_method'));
 app.use(urlencoded({extended:false}))
 app.use(express.json())
@@ -17,7 +19,7 @@ app.use('/api', router)
 app.get('*', (req, res, next)=>{
     try{
         res.sendFile(path.join(__dirname,'..','/client','index.html'))
-        
+
     }
     catch(err){
         next(err)
@@ -35,6 +37,8 @@ app.get('*', (req, res, next)=>{
 
 //500 handler
 //set PORT
+
+/* you should ALWAYS ALWAYS ALWAYS have error handlers */
 
 //listen
 
